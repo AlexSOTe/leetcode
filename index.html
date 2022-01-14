@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script>
+
+    /**
+     * 构建链表节点
+     * @param {any} val 节点的值
+     * @param {any} next 节点的指针
+     */
+    function ListNode(val, next) {
+      this.val = val === undefined ? 0 : val;
+      this.next = next === undefined ? null : next;
+    }
+    /**
+     * 生成简单链表
+     * @param {any} arr
+     */
+    function GenerateNodeList(arr) {
+      debugger;
+      let _arr = arr.reverse(); //反转数组
+      //初始节点
+      let initNode = new ListNode();
+      //当前节点，默认为初始节点
+      let currNode = initNode;
+      for (let i = 0, len = _arr.length; i < len; i++) {
+        //给当前节点赋值
+        currNode.val = _arr[i];
+        //给当前节点的next赋值
+        currNode.next = _arr[i + 1] ? new ListNode(_arr[i + 1]) : null;
+        //?? 这行是前进到下一个节点，但是，它是怎么前进的没搞清楚
+        currNode = currNode.next;
+      }
+      return initNode;
+    }
+    let a = GenerateNodeList([1, 2, 3, 4, 5, 6, 7]);
+    console.log(JSON.stringify(a, null, 2));
+  </script>
+</body>
+</html>
